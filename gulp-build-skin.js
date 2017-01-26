@@ -16,8 +16,6 @@ var buildSkinPlugin = function(_options) {
      "theme": "basic"
    },_options);
 
-   console.log(options);
-
    const BOOTSTRAP_LESS_PATH = "node_modules/bootstrap/less";
 
    var basePaths = [BOOTSTRAP_LESS_PATH];
