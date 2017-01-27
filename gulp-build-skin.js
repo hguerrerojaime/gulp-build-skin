@@ -1,5 +1,6 @@
 
 var gulp = require('gulp');
+var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var less = require('gulp-less');
@@ -25,6 +26,7 @@ var buildSkinPlugin = function(_options) {
    var sources = ["less/skin.base.less",options.skinSrc];
 
    return gulp.src(sources)
+      .pipe(concat('skin.bundle.less'))
       .pipe(replace(/<<theme>>/,options.theme))
       .pipe(less({
           compress: options.compress,
