@@ -1,6 +1,6 @@
 {
   "name": "gulp-build-skin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Gulp Less Bootstrap Skin Builder",
   "main": "gulp-build-skin.js",
   "scripts": {
