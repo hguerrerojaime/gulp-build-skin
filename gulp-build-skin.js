@@ -5,6 +5,7 @@ var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var less = require('gulp-less');
 var path = require('path');
+var findRoot = require('find-root');
 
 // The main function for the plugin – what the user calls – should return
 // a stream.
@@ -18,7 +19,9 @@ var buildSkinPlugin = function(_options) {
      "theme": "basic"
    },_options);
 
-   const BOOTSTRAP_LESS_PATH = path.normalize(__dirname+"/node_modules/bootstrap/less");
+   const BOOTSTRAP_ROOT = path.resolve("bootstrap/less",findRoot(require.resolve("bootstrap")));
+
+   const BOOTSTRAP_LESS_PATH = BOOTSTRAP_ROOT+"/less";
 
    var basePaths = [BOOTSTRAP_LESS_PATH];
 
