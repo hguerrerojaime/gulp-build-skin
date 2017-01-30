@@ -19,10 +19,16 @@ var buildSkinPlugin = function(_options) {
      "theme": "basic"
    },_options);
 
-   const BOOTSTRAP_ROOT = path.resolve("bootstrap/less",findRoot(require.resolve("bootstrap")));
+   var bsModule;
 
+   try {
+     bsModule = require.resolve("bootstrap");
+   } catch(err) {
+     throw new Error("Bootstrap module was not found, please install it using: npm i bootstrap --save");
+   }
+   
+   const BOOTSTRAP_ROOT = path.resolve("bootstrap/less",findRoot(bsModule));
    const BOOTSTRAP_LESS_PATH = BOOTSTRAP_ROOT+"/less";
-
    var basePaths = [BOOTSTRAP_LESS_PATH];
 
    var srcPaths = basePaths.concat(options.srcPaths);
@@ -38,6 +44,7 @@ var buildSkinPlugin = function(_options) {
       }))
       .pipe(rename(options.outputFile))
    ;
+
 };
 
 // Export the plugin main function
